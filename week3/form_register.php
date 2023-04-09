@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    <div class="container">
+    <div style="width: 500 px; background: lightblue ;" class="container" >
         <h4 style="text-align: center;">Form Registrasi IT Club</h4>
         <hr>
         <!-- code buka form -->
