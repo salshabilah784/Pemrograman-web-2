@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\TugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,7 @@ Route::get('/nilai',function(){
 Route::get('/form',[FormController::class, 'index']);
 
 Route::post('/hasil',[FormController::class, 'hasil']);
+
+Route::get('/formtugas',[TugasController::class, 'form']);
+
+Route::post('/hasiltugas',[TugasController::class, 'hasiltugas']);
