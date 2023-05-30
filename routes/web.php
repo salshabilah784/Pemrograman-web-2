@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\TugasController;
-
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,9 +43,19 @@ Route::get('/nilai',function(){
 });
 
 Route::get('/form',[FormController::class, 'index']);
-
 Route::post('/hasil',[FormController::class, 'hasil']);
 
 Route::get('/formtugas',[TugasController::class, 'form']);
-
 Route::post('/hasiltugas',[TugasController::class, 'hasiltugas']);
+
+//grup route admin
+Route::prefix('admin')->group(function(){
+    Route::get('/dashboard',[DashboardController::class, 'index']);
+    Route::get('/produk',[ProdukController::class, 'index']);
+});
+
+Route::prefix('frontend')->group(function(){
+    Route::get('/dashboard',[FrontendController::class, 'index']);
+    Route::get('/about',[FrontendController::class, 'about']);
+    Route::get('/halaman',[FrontendController::class, 'halaman']);
+});
