@@ -10,38 +10,38 @@
                         <div class="card mb-4 table-responsive">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Data Produk
+                                Data Pemesanan
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode</th>
-                                            <th>Nama</th>
-                                            <th>Harga Jual</th>
-                                            <th>Harga Beli</th>
-                                            <th>Stok</th>
-                                            <th>Minimal stok</th>
+                                            <th>Tanggal</th>
+                                            <th>Nama Pemesanan</th>
+                                            <th>Alamat Pemesanan</th>
+                                            <th>Nomor HP</th>
+                                            <th>Email</th>
+                                            <th>Jumlah Pemesanan</th>
                                             <th>Deskripi</th>
-                                            <th>Kategori Produk</th>
+                                            <th>Produk</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                        @php
                                            $no = 1;
                                        @endphp
-                                       @foreach ($produk as $prod)
+                                       @foreach ($pesanan as $pesan)
                                        <tr>
                                         <td>{{$no}}</td>
-                                        <td>{{$prod->kode }}</td>
-                                        <td>{{$prod->nama }}</td>
-                                        <td>{{$prod->harga_jual }}</td>
-                                        <td>{{$prod->harga_beli}}</td>
-                                        <td>{{$prod->stok}}</td>
-                                        <td>{{$prod->min_stok}}</td>
-                                        <td>{{$prod->deskripsi}}</td>
-                                        <td>{{$prod->nama_kategori}}</td>
+                                        <td>{{$pesan->tanggal}}</td>
+                                        <td>{{$pesan->nama_pemesan}}</td>
+                                        <td>{{$pesan->alamat_pemesan}}</td>
+                                        <td>{{$pesan->no_hp}}</td>
+                                        <td>{{$pesan->email}}</td>
+                                        <td>{{$pesan->jumlah_pesanan}}</td>
+                                        <td>{{$pesan->deskripsi}}</td>
+                                        <td>{{$pesan->nama_produk}}</td>
                                        </tr>
                                        @php
                                           $no++

@@ -5,6 +5,8 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +54,10 @@ Route::post('/hasiltugas',[TugasController::class, 'hasiltugas']);
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[DashboardController::class, 'index']);
     Route::get('/produk',[ProdukController::class, 'index']);
+    Route::get('/kategori_produk',[KategoriController::class, 'index']);
+    Route::get('/pesanan',[PesananController::class, 'index']);
+    Route::get('/produk/create',[ProdukController::class, 'create']);
+    Route::post('/produk/store',[ProdukController::class, 'store']);
 });
 
 Route::prefix('frontend')->group(function(){
