@@ -9,6 +9,10 @@
                         {{-- button tambah--}}
                         <div class="card mb-4 table-responsive">
                             <div class="card-header">
+                                <a href="{{ url('admin/produk/create') }}" class="btn btn-primary">Tambah data</a>
+                            </div>
+                        <div class="card mb-4 table-responsive">
+                            <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Data Produk
                             </div>
@@ -25,6 +29,7 @@
                                             <th>Minimal stok</th>
                                             <th>Deskripi</th>
                                             <th>Kategori Produk</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,6 +47,8 @@
                                         <td>{{$prod->min_stok}}</td>
                                         <td>{{$prod->deskripsi}}</td>
                                         <td>{{$prod->nama_kategori}}</td>
+                                        <td><a href="{{ url('admin/produk/edit/'. $prod->id)}}" class="btn btn-success">Edit</td>
+                                        <td><a href="{{ url('admin/produk/delete/'. $prod->id)}}" class="btn btn-danger">Delete</td>
                                        </tr>
                                        @php
                                           $no++

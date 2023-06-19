@@ -8,6 +8,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,9 @@ use App\Http\Controllers\FrontendController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,6 +62,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/pesanan',[PesananController::class, 'index']);
     Route::get('/produk/create',[ProdukController::class, 'create']);
     Route::post('/produk/store',[ProdukController::class, 'store']);
+    Route::get('/produk/edit/{id}',[ProdukController::class, 'edit']);
+    Route::post('/produk/update/{id}',[ProdukController::class, 'update']);
+    Route::get('/produk/delete/{id}',[ProdukController::class, 'destroy']);
+
+    Route::get('/pesanan/create', [PesananController::class, 'create']);
+    Route::post('/pesanan/store', [PesananController::class, 'store']);
+    Route::get('pesanan/edit/{id}', [PesananController::class, 'edit']);
+    Route::post('pesanan/update/{id}', [PesananController::class, 'update']);
+    Route::get('pesanan/delete/{id}', [PesananController::class, 'destroy']);
 });
 
 Route::prefix('frontend')->group(function(){
@@ -65,3 +78,11 @@ Route::prefix('frontend')->group(function(){
     Route::get('/about',[FrontendController::class, 'about']);
     Route::get('/halaman',[FrontendController::class, 'halaman']);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
