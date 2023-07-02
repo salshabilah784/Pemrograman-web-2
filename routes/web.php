@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\TugasController;
@@ -55,7 +56,8 @@ Route::get('/formtugas',[TugasController::class, 'form']);
 Route::post('/hasiltugas',[TugasController::class, 'hasiltugas']);
 
 //grup route admin
-Route::prefix('admin')->group(function(){
+Route::group(['middleware' => ['auth']], function(){
+    Route::prefix('admin')->group(function(){
     Route::get('/dashboard',[DashboardController::class, 'index']);
     Route::get('/produk',[ProdukController::class, 'index']);
     Route::get('/kategori_produk',[KategoriController::class, 'index']);
@@ -71,6 +73,7 @@ Route::prefix('admin')->group(function(){
     Route::get('pesanan/edit/{id}', [PesananController::class, 'edit']);
     Route::post('pesanan/update/{id}', [PesananController::class, 'update']);
     Route::get('pesanan/delete/{id}', [PesananController::class, 'destroy']);
+    });
 });
 
 Route::prefix('frontend')->group(function(){
